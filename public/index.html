@@ -19,20 +19,70 @@
           <li><a href="#">Recommendation Engine</a></li>
           <li><a href="#">Filters</a></li>
         </ul>
+        <ul class="nav pull-right">
+          <li><a href="#">Logout</a></li>
+        </ul>
       </div>
   </div>
 
   <div class="filters">
     <div class="btn-group" data-toggle="buttons-radio">
-      <a href="#" class="btn btn-primary active" onclick="window.location='/index.html'">Advertisers</button>
-      <a href="#" class="btn btn-primary" onclick="window.location='/advertisement.html'">Ads</a>
+      <a id="aFrontPage" href="#" class="btn btn-primary active">Advertisers</button>
+      <a id="aAdsPage" href="#" class="btn btn-primary">Ads</a>
     </div>
   </div>
 
+
+  <div id="divFrontPage">
     <ul id="ulAdvertisers">
 
     </ul>
-
+  </div>
+  <div id="divAdsPage" style="display:none">
+     <div class="row">
+        <div class="span3"></div>
+        <div class="span6">
+            <div id="divAds">
+              <div class="box ad1">
+                    <img src="http://placekitten.com/255/255"/>
+                    <div class="adHover">
+                        <div class="add pull-left">Add</div>
+                        <div class="remove pull-right">Remove</div>
+                    </div>
+                </div>
+                <div class="box ad1">
+                    <img src="http://placekitten.com/255/255"/>
+                    <div class="adHover">
+                        <div class="add pull-left">Add</div>
+                        <div class="remove pull-right">Remove</div>
+                    </div>
+                </div>
+                <div class="box ad1">
+                    <img src="http://placekitten.com/255/255"/>
+                    <div class="adHover">
+                        <div class="add pull-left">Add</div>
+                        <div class="remove pull-right">Remove</div>
+                    </div>
+                </div>
+                <div class="box ad1">
+                    <img src="http://placekitten.com/255/255"/>
+                    <div class="adHover">
+                        <div class="add pull-left">Add</div>
+                        <div class="remove pull-right">Remove</div>
+                    </div>
+                </div>
+                <div class="box ad1">
+                    <img src="http://placekitten.com/255/255"/>
+                    <div class="adHover">
+                        <div class="add pull-left">Add</div>
+                        <div class="remove pull-right">Remove</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span3"></div>
+    </div>
+  </div>
 
     <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
       <li class="row">
@@ -80,12 +130,42 @@
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#ulAdvertisers').approveadvertisers({
-            templateSelector: '#advertiserItemTmpl',
-            approveSelector: '.js_approveAdvertiser',
-            disapproveSelector: '.js_disapproveAdvertiser'
-          });
+        loadFrontPage();
+
+        $('#aFrontPage').click(function(){
+          loadFrontPage();
+        });
+
+        $('#aAdsPage').click(function(){
+          loadAdsPage();
+        });        
       });
+
+      function loadFrontPage(){
+        if($('#divAdsPage').is(':visible'))
+        {
+          $('#divAds').ads('destroy');
+        }
+        $('#divAdsPage').hide();
+        $('#divFrontPage').show();
+        $('#ulAdvertisers').approveadvertisers({
+          templateSelector: '#advertiserItemTmpl',
+          approveSelector: '.js_approveAdvertiser',
+          disapproveSelector: '.js_disapproveAdvertiser'
+        });
+      };
+
+      function loadAdsPage()
+      {
+        $('#ulAdvertisers').approveadvertisers('destroy');
+        $('#divAdsPage').show();
+        $('#divFrontPage').hide();
+        $('#divAds').ads({
+            templateSelector: '#adItemTmpl',
+            approveSelector: '.adHover .add',
+            disapproveSelector: '.adHover .remove'
+          });
+      };
     </script>
 </body>
 </html>

@@ -41,7 +41,7 @@ $.widget( "ui.approveadvertisers", {
   {
     $(element).parents('li').fadeOut();
     this._loadMoreAdvertisers(1);
-    $('#modalRejection').modal();
+    $('#modalRejection').modal({keyboard:false});
   },
   _loadMoreAdvertisers: function(count, appendToTop){
     var data = [

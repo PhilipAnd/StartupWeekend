@@ -38,6 +38,7 @@ $.widget( "ui.ads", {
   {
     $(element).parents('.box').fadeOut();
     //this._loadMoreAdvertisers(1);
+    $('#modalRejection').modal({keyboard:false});
   },
   _loadMoreAdvertisers: function(count){
     var data = [
