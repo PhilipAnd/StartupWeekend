@@ -98,3 +98,24 @@ html,body,.btn {
 	height: 30px;
 	color:white;
 }
+
+.brand {
+	padding: 0 !important;
+}
+
+.brand img {
+	height: 50px;
+}
+
+.leftMenu ul {
+	list-style-type: none;
+}
+
+.leftMenu .heading {
+	background-color:#0f82f5;
+	height: 25px;
+	padding-top: 5px;
+	color:white;
+	font-weight: bolder;
+	padding-left:5px;
+}

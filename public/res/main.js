@@ -2,6 +2,7 @@ $(document).ready(function(){
   loadFrontPage();
 
   setTimeout(function(){placeFooter()}, 3000);
+  
   $(window).resize(function(){
     placeFooter();
   });
