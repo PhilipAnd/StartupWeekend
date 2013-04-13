@@ -118,6 +118,14 @@
         <div><a href="#" data-dismiss="modal" class="btn btn-large btn-block btn-warning">Competiting Service</a></div>
         <div><a href="#" data-dismiss="modal" class="btn btn-large btn-block btn-danger">Other</a></div>
     </div>
+  </div>
+
+    <!-- Used to display that we have already filtered the stuff when the user first time logs in -->
+    <div id="modalAlreadyFiltered" class="modal-filter" style="position: absolute; display: none;">
+      <span>
+        We already approved the best advertisers for you, based on our algorithm. You can see the <a href="#">result</a>, or you can just <a href="#" onclick="closeOverlay(this)">close</a> this overlay.
+      </span>
+    </div>
 
     <script src="res/jquery-1.9.1.js"></script>
     <script src="res/jquery-ui-1.10.2.custom.min.js"></script>
@@ -128,44 +136,5 @@
     <script src="res/jquery.masonry.min.js"></script>
     <script src="res/main.js"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function(){
-        loadFrontPage();
-
-        $('#aFrontPage').click(function(){
-          loadFrontPage();
-        });
-
-        $('#aAdsPage').click(function(){
-          loadAdsPage();
-        });        
-      });
-
-      function loadFrontPage(){
-        if($('#divAdsPage').is(':visible'))
-        {
-          $('#divAds').ads('destroy');
-        }
-        $('#divAdsPage').hide();
-        $('#divFrontPage').show();
-        $('#ulAdvertisers').approveadvertisers({
-          templateSelector: '#advertiserItemTmpl',
-          approveSelector: '.js_approveAdvertiser',
-          disapproveSelector: '.js_disapproveAdvertiser'
-        });
-      };
-
-      function loadAdsPage()
-      {
-        $('#ulAdvertisers').approveadvertisers('destroy');
-        $('#divAdsPage').show();
-        $('#divFrontPage').hide();
-        $('#divAds').ads({
-            templateSelector: '#adItemTmpl',
-            approveSelector: '.adHover .add',
-            disapproveSelector: '.adHover .remove'
-          });
-      };
-    </script>
 </body>
 </html>

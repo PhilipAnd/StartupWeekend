@@ -90,3 +90,11 @@ html,body,.btn {
 	width: 50%;
 	height: 255px;
 }
+
+.modal-filter {
+	text-align: center;
+	width: 100%;
+	background-color: #ff0039;
+	height: 30px;
+	color:white;
+}
