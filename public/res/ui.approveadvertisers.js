@@ -1,9 +1,16 @@
-$.ui.approveadvertisers = {
-  _create: function () {
-    this._getData(this._renderAdvertisers);
+//$.ui.approveadvertisers = {
+$.widget( "ui.approveadvertisers", {
+  options:
+  { 
+    templateSelector: '',
+    approveSelector: '',
+    disapproveSelector: ''
   },
-  _renderAdvertisers: function(data){
-    $.tmpl(this.options.templateSelector, _getData()).appendTo(this.element);
+  _create: function () {
+    this._getIntialData(this._renderAdvertisers);
+  },
+  _renderAdvertisers: function(self, data){
+    $(self.options.templateSelector).tmpl(data).appendTo(self.element);
   },
   _setupClickEvents: function()
   {
@@ -29,9 +36,8 @@ $.ui.approveadvertisers = {
   _loadMoreAdvertisers: function(count){
     //TODO
   },
-  _getData: function(callBack){
-    var data = 
-   {
+  _getIntialData: function(){
+    var data = [
       {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
@@ -44,21 +50,14 @@ $.ui.approveadvertisers = {
         kloutScore: 91,
         kloutDescription: 'Klout score. @CocaCola'
       }
-    };
-
-    callBack(data);
+    ];
+    this._renderAdvertisers(this,data);
   },
   destroy: function () {
       // if using jQuery UI 1.8.x
       $.Widget.prototype.destroy.call(this);
       // if using jQuery UI 1.9.x
       //this._destroy();
-  },
-  options:
-  { 
-    templateSelector: '',
-    approveSelector: '',
-    disapproveSelector: ''
   }
-};
-$.widget("ui.approveadvertisers", $.ui.approveadvertisers);
+});
+//$.widget("ui.approveadvertisers", $.ui.approveadvertisers);
