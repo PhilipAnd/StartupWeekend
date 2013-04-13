@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
   <head>
-    <title>Mockup</title>
+    <title>Q-Rate</title>
     <link rel="stylesheet" href="res/bootstrap.css">
     <link rel="stylesheet" href="res/bootstrap-responsive.css">
     <link rel="stylesheet" href="res/style.css">
@@ -11,11 +11,26 @@
   </head>
   <body>
 
-    <ul id="ulAds" class="row">
+    <div id="divAds">
+    	<div class="box ad1">box1</div>
+		<div class="box ad2">box2</div>
+    	<div class="box ad3">box3</div>
+    	<div class="box ad2">box2</div>	
+    	<div class="box ad1">box1</div>
+		<div class="box ad2">box2</div>
+    	<div class="box ad3">box3</div>
+    	<div class="box ad2">box2</div>	
+    	<div class="box ad1">box1</div>
+		<div class="box ad2">box2</div>
+    	<div class="box ad3">box3</div>
+    	<div class="box ad2">box2</div>	
+    	<div class="box ad1">box1</div>
+		<div class="box ad2">box2</div>
+    	<div class="box ad3">box3</div>
+    	<div class="box ad2">box2</div>	
+    </div>
 
-    </ul>
-
-    <script id="advertItemTmpl" type="text/x-jquery-tmpl">
+    <script id="adItemTmpl" type="text/x-jquery-tmpl">
       // TODO
     </script>
 
@@ -23,15 +38,14 @@
     <script src="res/jquery-ui-1.10.2.custom.min.js"></script>
     <script src="res/bootstrap.js"></script>
     <script src="res/jquery.min.tmpl.js"></script>
-    <script src="res/ui.approveadvertisers.js"></script>
+    <script src="res/ui.ads.js"></script>
+    <script src="res/jquery.masonry.min.js"></script>
     <script src="res/main.js"></script>
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#ulAds').approvead({
-            templateSelector: '#advertiserItemTmpl',
-            approveSelector: '.js_approveAdvertiser',
-            disapproveSelector: '.js_disapproveAdvertiser'
+        $('#divAds').ads({
+            templateSelector: '#adItemTmpl',
           });
       });
     </script>
