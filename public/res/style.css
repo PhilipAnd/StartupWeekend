@@ -1,3 +1,9 @@
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,900,800,600,500,300,100,200);*/
+
+html,body,.btn {
+    font-family:Raleway;
+}
+
 .advertisers li {
     border:1px solid black;
 }
@@ -26,11 +32,19 @@
 	background-color: green;
 }
 
-.modal-body div {
-	text-align: center;
+
+#modalRejection {
+	text-align:center;
 }
 
-.modal-body .btn {
+#modalRejection .modal-header {
+    margin-top:10px;
+}
+
+#modalRejection .modal-body div {
+}
+
+#modalRejection .modal-body .btn {
 	margin-top:10px;
 }
 
