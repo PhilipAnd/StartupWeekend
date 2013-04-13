@@ -56,17 +56,15 @@ $.widget( "ui.ads", {
   _getIntialData: function(){
     var data = [
       {
-        brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
-        brandName: "Coca Cola",
-        kloutScore: 91,
-        description: 'Klout score. @CocaCola'
+        title: '',
+        description: '',
+        imageName: ''
       },
       {
-        brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
-        brandName: "Coca Cola",
-        kloutScore: 91,
-        description: 'Klout score. @CocaCola'
-      }
+        title: '',
+        description: '',
+        imageName: ''
+      },
     ];
     this._renderAdvertisers(this,data);
   },
