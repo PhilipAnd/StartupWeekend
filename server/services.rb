@@ -1,4 +1,4 @@
-require 'scrape_tools'
+require './scrape_tools'
 require 'active_support/memoizable'
 
 class Twitter
@@ -77,3 +77,6 @@ class UserInfoService
   end
 
 end
+
+ser = UserInfoService.new(Twitter.new, Klout.new)
+  p ser.get_info("Securifi")

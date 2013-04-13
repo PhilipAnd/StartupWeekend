@@ -4,6 +4,7 @@ class Advertiser
     field :username, type: String
     field :description, type: String
     field :website, type: String
+    field :img_url, type: String
     field :klout_score, type: Integer
 
 

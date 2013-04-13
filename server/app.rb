@@ -7,6 +7,7 @@ require 'sinatra/base'
 require 'mongoid'
 require 'models/publisher'
 require 'models/advertiser'
+require 'models/placement'
 
  
 Mongoid.load!("mongoid.yml")
@@ -37,10 +38,38 @@ class App < Sinatra::Base
   end
 
 
-  get '/advertisers.json' do
-    content_type :json
-    a = Advertiser.all
-    a.to_json
+  get '/advertisers' do
+    json Advertiser.all
+  end
+
+  get '/reject' do
+    advertiser = Advertiser.find(params[:advertiser_id])
+    publisher = Publisher.find(params[:publisher_id])
+
+    publisher.placements.each do |place|
+      place.advertiser_rejects = Array.new unless place.advertiser_rejects
+      unless place.advertiser_rejects.include?(advertiser.id)
+        place.advertiser_rejects << advertiser.id 
+        place.save
+      end
+    end if advertiser && publisher
+
+    json ""
+  end
+
+  get '/approve' do
+    advertiser = Advertiser.find(params[:advertiser_id])
+    publisher = Publisher.find(params[:publisher_id])
+
+    publisher.placements.each do |place|
+      place.advertiser_approves = Array.new unless place.advertiser_approves
+      unless place.advertiser_approves.include?(advertiser.id)
+        place.advertiser_approves << advertiser.id
+        place.save
+      end
+    end if advertiser && publisher
+
+    json ""
   end
 
   # TODO: I don't think we need to expose this to the frontend - We might just use it in a background job
