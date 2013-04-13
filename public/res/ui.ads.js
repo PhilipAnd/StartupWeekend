@@ -31,7 +31,6 @@ $.widget( "ui.ads", {
   },
   _approveAdvertiser: function(element,id)
   {
-    debugger;
     $(element).parents('.box').fadeOut();
     //this._loadMoreAdvertisers(1);
   },
@@ -56,9 +55,9 @@ $.widget( "ui.ads", {
   _getIntialData: function(){
     var data = [
       {
-        title: '',
-        description: '',
-        imageName: ''
+        title: 'New Relic',
+        description: 'Speed Up Your Code! Try New Relic Free and Get This Awesome Shirt!',
+        imageName: 'bigcommerce',
       },
       {
         title: '',
