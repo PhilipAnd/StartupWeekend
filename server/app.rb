@@ -6,6 +6,11 @@ require 'sinatra/base'
 
 class App < Sinatra::Base
 
+  configure do
+    set :public_folder, File.realpath(File.join(__FILE__, '..', '..', 'public'))
+    set :static, true
+  end
+
   helpers do
     def json(data, status_code = 200)
       status status_code
@@ -15,9 +20,8 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    json "Hello"
+    send_file settings.public_folder + '/index.html'
   end
-
 
 end
 
