@@ -7,7 +7,7 @@ $.ui.adverts = {
   },
   _getData: function(callBack){
     var data = 
-   {
+    {
       {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",

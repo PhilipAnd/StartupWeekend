@@ -4,3 +4,5 @@ gem 'json'
 gem 'rack-test'
 gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
+gem 'active_support'
+

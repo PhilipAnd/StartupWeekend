@@ -11,25 +11,12 @@
   </head>
   <body>
 
-    <ul id="ulAdvertisers" class="row">
+    <ul id="ulAds" class="row">
 
     </ul>
-  
 
-    <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
-      <li class="span12">
-        <div class="media advertisers">
-            <span class="pull-left">
-              <img class="media-object profile" src="${brandImage}">
-            </span>
-            <div class="media-body">
-              <h4 class="media-heading">${brandName}</h4>
-              <p><span class="badge badge-important">${kloutScore}</span>${kloutDescription}</p>
-            </div>
-            <a href="#" class="js_approveAdvertiser">Approve</a>
-            <a href="#" class="js_disapproveAdvertiser">Disaprove</a>
-        </div>
-      </li>
+    <script id="advertItemTmpl" type="text/x-jquery-tmpl">
+      // TODO
     </script>
 
     <script src="res/jquery-1.9.1.js"></script>
@@ -41,7 +28,7 @@
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#ulAdvertisers').approveadvertisers({
+        $('#ulAds').approvead({
             templateSelector: '#advertiserItemTmpl',
             approveSelector: '.js_approveAdvertiser',
             disapproveSelector: '.js_disapproveAdvertiser'
