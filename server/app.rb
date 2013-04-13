@@ -4,6 +4,13 @@ require 'bundler'
 require 'json'
 require 'cgi'
 require 'sinatra/base'
+require 'mongoid'
+require 'models/publisher'
+
+ 
+Mongoid.load!("mongoid.yml")
+
+
 require 'services'
 
 $debug = $stderr
@@ -28,6 +35,13 @@ class App < Sinatra::Base
     send_file settings.public_folder + '/index.html'
   end
 
+
+  get '/test.json' do
+    content_type :json
+    all_publishers = Publisher.all
+    all_publishers.to_json
+  end
+  
   # TODO: I don't think we need to expose this to the frontend - We might just use it in a background job
   get '/user-info' do
     json settings.user_info.get_info(params[:q])
