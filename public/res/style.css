@@ -15,8 +15,8 @@ html,body,.btn {
 }
 
 #divAds .ad1 {
-	width: 130;
-	height: 100;
+	width: 255px;
+	height: 255px;
 }
 
 #divAds .ad2 {
@@ -59,8 +59,34 @@ html,body,.btn {
 }
 
 #divAds .box {
+	position:relative;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-right: 10px;
 	float:left;
+}
+
+#divAds .box:hover .adHover {
+	display:inline;
+}
+
+.adHover {
+	display:none;
+	position:absolute;
+	top: 10px;
+	width: 255px;
+}
+
+.adHover .add {
+	background-color:green;
+	opacity: 0.7;
+	width: 50%;
+	height: 255px;
+}
+
+.adHover .remove {
+	background-color: red;
+	opacity: 0.7;
+	width: 50%;
+	height: 255px;
 }

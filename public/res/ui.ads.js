@@ -2,15 +2,18 @@
 $.widget( "ui.ads", {
   options:
   { 
-    templateSelector: ''
+    templateSelector: '',
+    approveSelector: '',
+    disapproveSelector: ''
   },
   _create: function () {
+
     /*this.element.masonry({
       itemSelector: '.box',
       columnWidth: 150
     });*/
     //this._getIntialData(this._renderAdvertisers);
-    //this._setupClickEvents();
+    this._setupClickEvents();
   },
   _renderAdvertisers: function(self, data){
     $(self.options.templateSelector).tmpl(data).appendTo(self.element);
@@ -18,29 +21,26 @@ $.widget( "ui.ads", {
   _setupClickEvents: function()
   {
     var self = this;
-
     this.element.on('click', self.options.approveSelector, function(){
-      console.log('approve')
       self._approveAdvertiser(this);
     });
 
     this.element.on('click', self.options.disapproveSelector, function(){
-      console.log('disapprove')
       self._disaproveAdvertiser(this);
     });
   },
   _approveAdvertiser: function(element,id)
   {
-    $(element).parents('li').fadeOut();
-    this._loadMoreAdvertisers(1);
+    debugger;
+    $(element).parents('.box').fadeOut();
+    //this._loadMoreAdvertisers(1);
   },
   _disaproveAdvertiser: function(element,id)
   {
-    $(element).parents('li').fadeOut();
-    this._loadMoreAdvertisers(1);
+    $(element).parents('.box').fadeOut();
+    //this._loadMoreAdvertisers(1);
   },
   _loadMoreAdvertisers: function(count){
-    console.log('test2')
     var data = [
       {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
@@ -50,7 +50,6 @@ $.widget( "ui.ads", {
       }
     ]; 
 
-    console.log(data);
     var item = $(this.options.templateSelector).tmpl(data);
     item.fadeIn(1000).appendTo(this.element);
   },
