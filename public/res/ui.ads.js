@@ -5,10 +5,10 @@ $.widget( "ui.ads", {
     templateSelector: ''
   },
   _create: function () {
-    this.element.masonry({
+    /*this.element.masonry({
       itemSelector: '.box',
-      columnWidth: 100
-    });
+      columnWidth: 150
+    });*/
     //this._getIntialData(this._renderAdvertisers);
     //this._setupClickEvents();
   },
