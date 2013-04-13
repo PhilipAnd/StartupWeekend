@@ -36,19 +36,24 @@
 
     <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
       <li class="row">
-        <div class="span3"></div>
-        <div class="media advertisers span6">
+        <div class="span4"></div>
+        <div class="media advertisers span4">
             <span class="pull-left">
               <img class="media-object profile" src="${brandImage}">
             </span>
             <div class="media-body">
-              <h4 class="media-heading">${brandName}</h4>
-              <p><span class="badge badge-important">${kloutScore}</span>${kloutDescription}</p>
+              <div class="pull-left">
+                <h4 class="media-heading">${brandName}</h4>
+                <p>${description}</p>
+              </div>
+              <div class="pull-right">
+                <span class="badge badge-important">${kloutScore}</span>
+              </div>
             </div>
             <a href="#" class="js_approveAdvertiser btn"><i class="icon-user icon-ok"></i>Approve</a>
             <a href="#" class="js_disapproveAdvertiser btn"><i class="icon-user icon-remove"></i>Disaprove</a>
         </div>
-        <div class="span3"></div>
+        <div class="span4"></div>
       </li>
     </script>
 

@@ -46,7 +46,7 @@ $.widget( "ui.ads", {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
         kloutScore: 91,
-        kloutDescription: 'Klout score. @CocaCola'
+        description: 'Klout score. @CocaCola'
       }
     ]; 
 
@@ -60,13 +60,13 @@ $.widget( "ui.ads", {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
         kloutScore: 91,
-        kloutDescription: 'Klout score. @CocaCola'
+        description: 'Klout score. @CocaCola'
       },
       {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
         kloutScore: 91,
-        kloutDescription: 'Klout score. @CocaCola'
+        description: 'Klout score. @CocaCola'
       }
     ];
     this._renderAdvertisers(this,data);

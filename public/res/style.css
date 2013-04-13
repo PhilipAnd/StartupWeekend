@@ -37,3 +37,10 @@
 .filters {
 	text-align: center;
 }
+
+.badge-important {
+	height: 60px;
+	width: 60px;
+	line-height: 55px;
+	font-size: 31px;
+}
