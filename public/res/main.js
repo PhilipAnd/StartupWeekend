@@ -36,7 +36,7 @@ function placeFooter()
   var footerHeight = footer.height();
   var offset = parseInt(wHeight) - parseInt(footerHeight);
   footer.css('top',offset);
-  footer.fadeIn();
+  footer.fadeIn('3000');
 };
 
 function loadAdsPage()
