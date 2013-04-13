@@ -9,21 +9,26 @@ $.widget( "ui.approveadvertisers", {
   _create: function () {
     this._getIntialData(this._renderAdvertisers);
     this._setupClickEvents();
+    this._setupInjectAd();
   },
   _renderAdvertisers: function(self, data){
     $(self.options.templateSelector).tmpl(data).appendTo(self.element);
+  },
+  _setupInjectAd: function(){
+    var self = this;
+    /*setInterval(function(){ 
+      self._loadMoreAdvertisers(1,true)
+    },15000);*/
   },
   _setupClickEvents: function()
   {
     var self = this;
 
     this.element.on('click', self.options.approveSelector, function(){
-      console.log('approve')
       self._approveAdvertiser(this);
     });
 
     this.element.on('click', self.options.disapproveSelector, function(){
-      console.log('disapprove')
       self._disaproveAdvertiser(this);
     });
   },
@@ -36,21 +41,25 @@ $.widget( "ui.approveadvertisers", {
   {
     $(element).parents('li').fadeOut();
     this._loadMoreAdvertisers(1);
+    $('#modalRejection').modal();
   },
-  _loadMoreAdvertisers: function(count){
-    console.log('test2')
+  _loadMoreAdvertisers: function(count, appendToTop){
     var data = [
       {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
         kloutScore: 91,
-        kloutDescription: 'Klout score. @CocaCola'
+        description: 'Klout score. @CocaCola'
       }
     ]; 
 
-    console.log(data);
     var item = $(this.options.templateSelector).tmpl(data);
-    item.fadeIn(1000).appendTo(this.element);
+    if(appendToTop)
+    {
+      item.fadeIn(1000).prependTo(this.element);
+    }else{
+      item.fadeIn(1500).appendTo(this.element);
+    }
   },
   _getIntialData: function(){
     var data = [
@@ -58,13 +67,13 @@ $.widget( "ui.approveadvertisers", {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
         kloutScore: 91,
-        kloutDescription: 'Klout score. @CocaCola'
+        description: 'Klout score. @CocaCola'
       },
       {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
         kloutScore: 91,
-        kloutDescription: 'Klout score. @CocaCola'
+        description: 'Klout score. @CocaCola'
       }
     ];
     this._renderAdvertisers(this,data);

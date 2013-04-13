@@ -7,3 +7,46 @@
     width:75px;
     float:left;
 }
+
+#divAds .ad1 {
+	width: 130;
+	height: 100;
+}
+
+#divAds .ad2 {
+	width: 200px;
+	height: 200px;
+	background-color: yellow;
+}
+
+#divAds .ad4 {
+	width: 400px;
+	height: 400px;
+	background-color: green;
+}
+
+.modal-body div {
+	text-align: center;
+}
+
+.modal-body .btn {
+	margin-top:10px;
+}
+
+.filters {
+	text-align: center;
+}
+
+.badge-important {
+	height: 60px;
+	width: 60px;
+	line-height: 55px;
+	font-size: 31px;
+}
+
+#divAds .box {
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+	float:left;
+}
