@@ -6,14 +6,14 @@ require 'cgi'
 require 'sinatra/base'
 require 'services'
 
+$debug = $stderr
+
 class App < Sinatra::Base
 
   configure do
     set :public_folder, File.realpath(File.join(__FILE__, '..', '..', 'public'))
     set :static, true
-    $debug = $stderr
-    set :twitter, Proc.new { Twitter.new }
-    set :klout, Proc.new { Klout.new }
+    set :user_info, Proc.new { UserInfoService.new(Twitter.new, Klout.new) }
   end
 
   helpers do
@@ -24,13 +24,13 @@ class App < Sinatra::Base
     end
   end
 
-  get '/klout/info' do
-    twitter_name = settings.twitter.search_users(params[:q]).first
-    json settings.klout.score(twitter_name)
-  end
-
   get '/' do
     send_file settings.public_folder + '/index.html'
+  end
+
+  # TODO: I don't think we need to expose this to the frontend - We might just use it in a background job
+  get '/user-info' do
+    json settings.user_info.get_info(params[:q])
   end
 
 end

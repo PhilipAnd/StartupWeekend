@@ -11,16 +11,25 @@ class Twitter
     @session.headers['accept-language'] = "en,en-us;q=0.5"
   end
 
+  # <img class="avatar js-action-profile-avatar " src="https://si0.twimg.com/profile_images/1884480827/profilePic_normal.jpg" alt="Coca-Cola" data-user-id="26787673"/>
+  #curl 'https://twitter.com/search/users?q=coca%20cola'|grep 'js-action-profile-avatar'
   #curl 'https://twitter.com/search/users?q=coca%20cola'|grep 'js-action-profile-name'|grep 'username'
   def search_users(query)
     request = Net::HTTP::Get.new("/search/users?q=#{CGI.escape(query)}")
     response = @session.request(request)
     raw = response.body.to_s
     results = []
+=begin
     TagButcher.new(raw, :span).find_by_class('js-action-profile-name').each do |tag|
       if tag[:class_names].include? 'username'
         results << CGI.unescapeHTML(tag[:inner_html]).strip.gsub(/^@/, "")
       end
+    end
+=end
+    TagButcher.new(raw, :img).find_by_class('js-action-profile-avatar').each do |tag|
+      image = tag[:tag].match(/src="([^"]*)"/)[1]
+      user_id = tag[:tag].match(/data-user-id="([^"]*)"/)[1]
+      results << { :twitter_id => user_id, :image => CGI.unescapeHTML(image) }
     end
     return results
   end
@@ -36,23 +45,35 @@ class Klout
     @key = 'gxhxukcwrb7x9umwdce5sx47'
   end
 
-  # curl 'http://api.klout.com/v2/identity.json/twitter?screenName=CocaC%20ola&key=$KEY'
-  def identity(twitter_name)
-    uri = URI.parse("http://api.klout.com/v2/identity.json/twitter?screenName=#{CGI.escape(twitter_name)}&key=#{CGI.escape(@key)}")
+  def identity(twitter_id)
+    uri = URI.parse("http://api.klout.com/v2/identity.json/tw/#{CGI.escape(twitter_id)}?key=#{CGI.escape(@key)}")
     response = Net::HTTP.get_response(uri)
     data = JSON.parse(response.body.to_s)
     data ? data['id'] : nil
   end
   memoize :identity
 
-  def score(twitter_name)
-    id = identity(twitter_name)
-    'http://api.klout.com/v2/user.json/45598950992084523/score'
-    uri = URI.parse("http://api.klout.com/v2/user.json/#{id}?key=#{CGI.escape(@key)}")
+  def score(twitter_id)
+    klout_id = identity(twitter_id)
+    uri = URI.parse("http://api.klout.com/v2/user.json/#{klout_id}?key=#{CGI.escape(@key)}")
     response = Net::HTTP.get_response(uri)
     data = JSON.parse(response.body.to_s)
     data ? data['score']['score'] : nil
   end
   memoize :score
+
+end
+
+class UserInfoService
+
+  def initialize(twitter, klout)
+    @twitter, @klout = twitter, klout
+  end
+
+  def get_info(query)
+    info = @twitter.search_users(query).first
+    info[:klout_score] = @klout.score(info[:twitter_id])
+    info
+  end
 
 end
