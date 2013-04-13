@@ -25,7 +25,6 @@ $.widget( "ui.approveadvertisers", {
     var self = this;
 
     this.element.on('click', self.options.approveSelector, function(){
-      console.log('approve')
       self._approveAdvertiser(this);
     });
 
