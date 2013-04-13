@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
   <head>
-    <title>Mockup</title>
+    <title>Q-Rate</title>
     <link rel="stylesheet" href="res/bootstrap.css">
     <link rel="stylesheet" href="res/bootstrap-responsive.css">
     <link rel="stylesheet" href="res/style.css">
@@ -11,14 +11,33 @@
   </head>
   <body>
 
-    <ul id="ulAdvertisers" class="row">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Q-Rate</a>
+        <ul class="nav">
+          <li class="active"><a href="#">Manual Curation</a></li>
+          <li><a href="#">Recommendation Engine</a></li>
+          <li><a href="#">Filters</a></li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="filters">
+    <div class="btn-group" data-toggle="buttons-radio">
+      <a href="#" class="btn btn-primary active" onclick="window.location='/index.html'">Advertisers</button>
+      <a href="#" class="btn btn-primary" onclick="window.location='/advertisement.html'">Ads</a>
+    </div>
+  </div>
+
+    <ul id="ulAdvertisers">
 
     </ul>
   
 
     <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
-      <li class="span12">
-        <div class="media advertisers">
+      <li class="row">
+        <div class="span3"></div>
+        <div class="media advertisers span6">
             <span class="pull-left">
               <img class="media-object profile" src="${brandImage}">
             </span>
@@ -29,14 +48,29 @@
             <a href="#" class="js_approveAdvertiser">Approve</a>
             <a href="#" class="js_disapproveAdvertiser">Disaprove</a>
         </div>
+        <div class="span3"></div>
       </li>
     </script>
+
+    <div id="modalRejection" class="modal hide fade">
+      <div class="modal-header">
+        <h3>The ad was rejected because...</h3>
+      </div>
+      <div class="modal-body">
+        <div><a href="#" data-dismiss="modal" class="btn">Price</a></div>
+        <div><a href="#" data-dismiss="modal" class="btn">Audience fit</a></div>
+        <div><a href="#" data-dismiss="modal" class="btn">Poor design</a></div>
+        <div><a href="#" data-dismiss="modal" class="btn">Competitive service</a></div>
+        <div><a href="#" data-dismiss="modal" class="btn">Other</a></div>
+    </div>
 
     <script src="res/jquery-1.9.1.js"></script>
     <script src="res/jquery-ui-1.10.2.custom.min.js"></script>
     <script src="res/bootstrap.js"></script>
     <script src="res/jquery.min.tmpl.js"></script>
     <script src="res/ui.approveadvertisers.js"></script>
+    <script src="res/ui.ads.js"></script>
+    <script src="res/jquery.masonry.min.js"></script>
     <script src="res/main.js"></script>
 
     <script type="text/javascript">

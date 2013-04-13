@@ -7,3 +7,33 @@
     width:75px;
     float:left;
 }
+
+#divAds .ad1 {
+	width: 250px;
+	height: 250px;
+	background-color: blue;
+}
+
+#divAds .ad2 {
+	width: 200px;
+	height: 200px;
+	background-color: yellow;
+}
+
+#divAds .ad4 {
+	width: 400px;
+	height: 400px;
+	background-color: green;
+}
+
+.modal-body div {
+	text-align: center;
+}
+
+.modal-body .btn {
+	margin-top:10px;
+}
+
+.filters {
+	text-align: center;
+}
