@@ -9,21 +9,44 @@
         <script src="res/html5shiv.js"></script>
     <![endif]-->
   </head>
-
   <body>
 
-    <div class="media advertisers">
-      <span class="pull-left">
-        <img class="media-object profile" src="http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg">
-      </span>
-      <div class="media-body">
-        <h4 class="media-heading">Coca Cola</h4>
-        <p><span class="badge badge-important">91</span> Klout score. @CocaCola</p>
-      </div>
-    </div>
+    <ul id="ulAdvertisers" class="row">
+
+    </ul>
+  
+
+    <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
+      <li class="span12">
+        <div class="media advertisers">
+            <span class="pull-left">
+              <img class="media-object profile" src="http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg">
+            </span>
+            <div class="media-body">
+              <h4 class="media-heading">Coca Cola</h4>
+              <p><span class="badge badge-important">91</span> Klout score. @CocaCola</p>
+            </div>
+        </div>
+      </li>
+    </script>
+
+    <script id="advertItemTmpl" type="text/x-jquery-tmpl">
+      // TODO
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function({
+        $('#ulAdvertisers').approveadvertisers(
+          {
+            templateSelector: '#advertiserItemTmpl'
+          });
+      });
+    </script>
 
     <script src="res/jquery-1.9.1.js"></script>
+    <script src="res/jquery-ui-1.10.2.custom.min"></script>
     <script src="res/bootstrap.js"></script>
+    <script src="res/jquery.min.tmpl.js"></script>
     <script src="res/main.js"></script>
 </body>
 </html>
