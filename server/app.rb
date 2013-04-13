@@ -3,6 +3,12 @@ require 'bundler'
 require 'json'
 require 'cgi'
 require 'sinatra/base'
+require 'mongoid'
+require 'models/publisher'
+
+ 
+Mongoid.load!("mongoid.yml")
+
 
 class App < Sinatra::Base
 
@@ -21,6 +27,12 @@ class App < Sinatra::Base
 
   get '/' do
     send_file settings.public_folder + '/index.html'
+  end
+
+  get '/test.json' do
+    content_type :json
+    all_publishers = Publisher.all
+    all_publishers.to_json
   end
 
 end
