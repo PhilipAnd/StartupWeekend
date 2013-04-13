@@ -1,0 +1,9 @@
+.advertisers li {
+    border:1px solid black;
+}
+
+.advertisers li .profile {
+    height:75px;
+    width:75px;
+    float:left;
+}
