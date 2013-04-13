@@ -6,6 +6,7 @@ require 'cgi'
 require 'sinatra/base'
 require 'mongoid'
 require 'models/publisher'
+require 'models/advertiser'
 
  
 Mongoid.load!("mongoid.yml")
@@ -36,12 +37,12 @@ class App < Sinatra::Base
   end
 
 
-  get '/test.json' do
+  get '/advertisers.json' do
     content_type :json
-    all_publishers = Publisher.all
-    all_publishers.to_json
+    a = Advertiser.all
+    a.to_json
   end
-  
+
   # TODO: I don't think we need to expose this to the frontend - We might just use it in a background job
   get '/user-info' do
     json settings.user_info.get_info(params[:q])

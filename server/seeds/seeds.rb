@@ -43,12 +43,16 @@ end
 
 def mock_ads
 	puts "seeding advitisers"
-	1.upto 5 do
+	(1...advitisers.size).each do |i|
+		temp_adv = advitisers[i]
 		advitiser = Advertiser.new
-		advitiser.username = advitisers[Random.rand(advitisers.size)][:username]
+		advitiser.username = temp_adv[:username]
+		advitiser.klout_score = temp_adv[:klout_score]
+		advitiser.website = temp_adv[:website]
+		advitiser.description = temp_adv[:description]
 		advitiser.save
 
-		1.upto 10 do
+		1.upto 15 do
 			ad = ads[Random.rand(ads.size)]
 			advitiser.advertisements.create(
 				{:width => ad[:width], 
@@ -58,18 +62,25 @@ def mock_ads
 	end	
 end
 
+
 def advitisers
 	[
-		{:username => "Coca cola", :description =>"drink", :website => "www.cola.com", :klout_score=> 20},
-		{:username => "Carlsberg", :description =>"drink", :website => "www.carlsberg.com", :klout_score=> 21},
-		{:username => "test", :description =>"test", :website => "www.test.com", :klout_score=> 10},
-		{:username => "test2", :description =>"test2", :website => "www.test.com", :klout_score=> 10},
-		{:username => "test3", :description =>"test3", :website => "www.test.com", :klout_score=> 10},
-		{:username => "test4", :description =>"test4", :website => "www.test.com", :klout_score=> 10},
-		{:username => "test5", :description =>"test5", :website => "www.test.com", :klout_score=> 10},
-		{:username => "test6", :description =>"test6", :website => "www.test.com", :klout_score=> 10},
-		{:username => "test7", :description =>"test7", :website => "www.test.com", :klout_score=> 10},
-		{:username => "test8", :description =>"test8", :website => "www.test.com", :klout_score=> 10}
+		{:username => "Securifi", :description =>"Easy Touchscreen WiFi Router. Easier Home Automation. Exquisitely Designed.", :website => "www.cola.com", :klout_score=> 20},
+		{:username => "Outdoor Tech", :description =>"Wireless Audio", :website => "www.carlsberg.com", :klout_score=> 21},
+		{:username => "Fusion Charts", :description =>"21,000 customers. 450,000 users. A billion charts per month. Download Now.", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Dropifi", :description =>"Supercharge your website with the simplest lead generation/customer support tool", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Cloud9", :description =>"Not your Dad's IDE. FREE Membership Available", :website => "www.test.com", :klout_score=> 10},
+		{:username => "BigCommerce", :description =>"Create a successful online store", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Bug Herd", :description =>"Beautifully simple bug tracking for your websites and web applications.", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Braintree payments", :description =>"AUTHENTIC: Open APIs, a strong developer community, and rave-worthy support.", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Campaign Monitor", :description =>"Send beautiful email newsletters with Campaign Monitor", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Helpscount", :description =>"Built for small business, you can get up & running with Help Scout in 4 minutes", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Groovemade", :description =>"Made of 100% recycled skateboards - Free shipping w/ code: vibranti", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Mandril", :description =>"Mandrill is a new transactional email service from MailChimp. Try it today.", :website => "www.test.com", :klout_score=> 10},
+		{:username => "GetHarvest", :description =>"Painless time tracking for creative professionals.", :website => "www.test.com", :klout_score=> 10},
+		{:username => "Powtoon", :description =>"Create free animated videos and awesome presentations", :website => "www.test.com", :klout_score=> 10},
+		{:username => "InfographicDesignTeam.com", :description =>"Custom Infographics Design and Data Visualization Services", :website => "www.test.com", :klout_score=> 10},
+		{:username => "New Relic", :description =>"Speed Up Your Code! Try New Relic Free and Get This Awesome Shirt!", :website => "www.test.com", :klout_score=> 10}
 	]
 end
 
