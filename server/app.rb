@@ -81,10 +81,30 @@ class App < Sinatra::Base
     pub = Publisher.find(params[:publisher_id])
     rejected = Array.new
     pub.placements.each do |place|
-      rejected += place.advertiser_rejects if place.advertiser_rejects
+      if place.advertiser_rejects
+        place.advertiser_rejects.each do |rej_adver|
+          ad = Advertiser.find(rej_adver).advertisements
+          rejected << ad unless rejected.include?(ad)
+        end
+      end
     end
 
-    rejected.flatten.map{ |ad_id| Advertisement.find(ad_id)}
+    json rejected
+  end
+
+  get '/approved_ads' do
+    pub = Publisher.find(params[:publisher_id])
+    approved = Array.new
+    pub.placements.each do |place|
+      if place.advertiser_approves
+        place.advertiser_approves.each do |approv_adver|
+          ad = Advertiser.find(approv_adver).advertisements
+          approved << ad unless approved.include?(ad)
+        end
+      end
+    end
+
+    json approved
   end
 
   # TODO: I don't think we need to expose this to the frontend - We might just use it in a background job
