@@ -37,6 +37,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   bson_ext
   json
   mongoid (~> 3.0.0)
