@@ -192,15 +192,16 @@
   width: 50%;
   height: 250px;
   line-height: 250px;
-    font-family: 'icomoon';
-    font-size: 48px;
-    vertical-align:middle;
-    text-align:center;
-    transition: all .25s ease-in-out;
-   -moz-transition: all .25s ease-in-out;
-   -webkit-transition: all .25s ease-in-out;
-    background-color:#ccc;
-color:#333;
+  font-family: 'icomoon';
+  font-size: 48px;
+  vertical-align:middle;
+  text-align:center;
+  transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -webkit-transition: all .25s ease-in-out;
+  background-color:#ccc;
+  color:#333;
+  cursor:pointer;
 }
 
 .adHover .add:hover {
@@ -272,4 +273,29 @@ color:#333;
   margin-left: 100px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+#login {
+    padding:0;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#login h1 {
+    padding:20px 10px;
+    background-color: #333;
+    color:#eee;
+}
+
+#login input {
+    width:100%;
+    font-size:24px;
+    line-height:36px;
+    height:36px;
+    color:#333;
+}
+
+#login .actions {
+    text-align:right;
 }
