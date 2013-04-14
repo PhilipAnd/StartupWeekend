@@ -40,7 +40,7 @@ class App < Sinatra::Base
 
 
   get '/advertisers' do
-    json Advertiser.all.desc(:klout_score)
+    json Advertiser.all.asc(:klout_score)
   end
 
   get '/reject' do
@@ -84,7 +84,7 @@ class App < Sinatra::Base
       rejected += place.advertiser_rejects if place.advertiser_rejects
     end
 
-    #rejected.map{ |ad_id| Advertisement.find(ad_id)}
+    rejected.flatten.map{ |ad_id| Advertisement.find(ad_id)}
   end
 
   # TODO: I don't think we need to expose this to the frontend - We might just use it in a background job
