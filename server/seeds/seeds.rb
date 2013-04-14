@@ -53,18 +53,18 @@ def mock_ads
 		advitiser.username = temp_adv[:username]
 		advitiser.klout_score = temp_adv[:klout_score]
 		advitiser.website = temp_adv[:website]
-		#advitiser.description = temp_adv[:description]
+		advitiser.description = temp_adv[:description]
 		advitiser.img_url = temp_adv[:img_url]
 		advitiser.save
 
-		1.upto 1 do
-			ad = ads[Random.rand(ads.size)]
-			advitiser.advertisements.create(
-				{:width => ad[:width], 
-				 :height => ad[:height],
-				 :creative => ad[:creative],
-				 :description => temp_adv[:description]})
-		end
+		ad = ads[i]
+		advitiser.advertisements.create(
+			{:width => ad[:width], 
+			 :height => ad[:height],
+			 :creative => ad[:creative],
+			 :description => temp_adv[:description],
+			 :img_name => ad[:img_name]})
+		
 	end	
 end
 
@@ -90,19 +90,33 @@ def advitisers
 	]
 end
 
+def ads
+	[
+		{:width => 500, :height => 300, :creative => "html", :img_name => "securifi.jpg"},
+		{:width => 350, :height => 180, :creative => "html", :img_name => "outdoortech.jpg"},
+		{:width => 130, :height => 100, :creative => "html", :img_name => "fusioncharts.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "dropifi.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "cloud9.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "bigcommerce.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "bugherd.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "braintree.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "campaignMonitor.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "helpscout.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "groovemade.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "mandril.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "GetHarvest.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "powtoon.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "glyphicons-halflings.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "newrelic.jpeg"},
+	]
+end
+
+
 def ad_sizes
 	[
 		{:width => 500, :height => 300},
 		{:width => 350, :height => 180},
 		{:width => 100, :height => 80}
-	]
-end
-
-def ads
-	[
-		{:width => 500, :height => 300, :creative => "html"},
-		{:width => 350, :height => 180, :creative => "html"},
-		{:width => 100, :height => 80, :creative => "html"}
 	]
 end
 
