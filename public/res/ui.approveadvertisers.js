@@ -7,6 +7,7 @@ $.widget( "ui.approveadvertisers", {
     disapproveSelector: ''
   },
   _create: function () {
+    var self = this;
     this._getIntialData(this._renderAdvertisers);
     this._setupClickEvents();
     this._setupInjectAd();
@@ -36,12 +37,14 @@ $.widget( "ui.approveadvertisers", {
   {
     $(element).parents('li').fadeOut();
     this._loadMoreAdvertisers(1);
+    this._updateApprovedAdvertisers();
   },
   _disaproveAdvertiser: function(element,id)
   {
     $(element).parents('li').fadeOut();
     this._loadMoreAdvertisers(1);
     $('#modalRejection').modal({keyboard:false});
+    this.updateDisapprovedAdvertisers();
   },
   _loadMoreAdvertisers: function(count, appendToTop){
     var data = [
@@ -60,6 +63,31 @@ $.widget( "ui.approveadvertisers", {
     }else{
       item.fadeIn(1500).appendTo(this.element);
     }
+  },
+  _updateApprovedAdvertisers: function(){
+    var countElement = $('#advertiserApprovedCount');
+    var newCount = this._getNumber(countElement.text()) +1;
+    countElement.fadeOut(function(){
+      countElement.text("("+newCount+")").fadeIn(2000);
+    });
+    countElement.text("("+newCount+")");
+  },
+  updateDisapprovedAdvertisers: function(){
+    var countElement = $('#advertiserDisapprovedCount');
+    var newCount = this._getNumber(countElement.text()) + 1;
+    countElement.fadeOut(function(){
+      countElement.text("("+newCount+")").fadeIn(2000);
+    });
+    countElement.text("("+newCount+")");
+  },
+  // Get number from approved/disapproved string
+  _getNumber: function(inputString){
+    inputString = inputString.replace('(','').replace(')','');
+    if(inputString == "")
+    {
+      return 0;
+    }
+    return parseInt(inputString);
   },
   _getIntialData: function(){
     var data = [

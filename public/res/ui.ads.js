@@ -32,6 +32,7 @@ $.widget( "ui.ads", {
   _approveAdvertiser: function(element,id)
   {
     $(element).parents('.box').fadeOut();
+    this._updateApprovedAds();
     //this._loadMoreAdvertisers(1);
   },
   _disaproveAdvertiser: function(element,id)
@@ -39,6 +40,32 @@ $.widget( "ui.ads", {
     $(element).parents('.box').fadeOut();
     //this._loadMoreAdvertisers(1);
     $('#modalRejection').modal({keyboard:false});
+    this._updateDisapprovedAds();
+  },
+  _updateApprovedAds: function(){
+    var countElement = $('#adsApprovedCount');
+    var newCount = this._getNumber(countElement.text()) +1;
+    countElement.fadeOut(function(){
+      countElement.text("("+newCount+")").fadeIn(2000);
+    });
+    countElement.text("("+newCount+")");
+  },
+  _updateDisapprovedAds: function(){
+    var countElement = $('#adsDisapprovedCount');
+    var newCount = this._getNumber(countElement.text()) + 1;
+    countElement.fadeOut(function(){
+      countElement.text("("+newCount+")").fadeIn(2000);
+    });
+    countElement.text("("+newCount+")");
+  },
+  // Get number from approved/disapproved string
+  _getNumber: function(inputString){
+    inputString = inputString.replace('(','').replace(')','');
+    if(inputString == "")
+    {
+      return 0;
+    }
+    return parseInt(inputString);
   },
   _loadMoreAdvertisers: function(count){
     var data = [
