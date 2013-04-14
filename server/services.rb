@@ -77,6 +77,3 @@ class UserInfoService
   end
 
 end
-
-ser = UserInfoService.new(Twitter.new, Klout.new)
-  p ser.get_info("Securifi")

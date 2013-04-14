@@ -7,6 +7,7 @@ require 'sinatra/base'
 require 'mongoid'
 require 'models/publisher'
 require 'models/advertiser'
+require 'models/advertisement'
 require 'models/placement'
 
  
@@ -70,6 +71,20 @@ class App < Sinatra::Base
     end if advertiser && publisher
 
     json ""
+  end
+
+  get '/ads' do
+    json Advertisement.all.limit(20)
+  end
+
+  get '/rejected_ads' do
+    pub = Publisher.find(params[:publisher_id])
+    rejected = Array.new
+    pub.placements.each do |place|
+      rejected += place.advertiser_rejects if place.advertiser_rejects
+    end
+
+    #rejected.map{ |ad_id| Advertisement.find(ad_id)}
   end
 
   # TODO: I don't think we need to expose this to the frontend - We might just use it in a background job

@@ -7,7 +7,7 @@ class Advertisement
 		field :img_url, type: String
 		field :description, type: String
 
-    belongs_to :advertiser
+    belongs_to :advertiser, :inverse_of => :advertisements
 end
 
 
