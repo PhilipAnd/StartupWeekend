@@ -6,6 +6,10 @@ $(document).ready(function(){
 
   setTimeout(function(){placeFooter()}, 3000);
 
+  setTimeout(function(){
+    $('.js_moreAdvertisers').fadeIn(3000);
+  }, 5000);
+
   $(window).resize(function(){
     placeFooter();
   });

@@ -206,3 +206,10 @@
     line-height:30px;
     margin-left:10px;
 }
+
+.newAdvertisers {
+  display:block;
+  margin-left: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
