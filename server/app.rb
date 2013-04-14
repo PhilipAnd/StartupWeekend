@@ -43,7 +43,7 @@ class App < Sinatra::Base
     json Advertiser.all.asc(:klout_score)
   end
 
-  get '/reject' do
+  get '/reject/:advertiser_id' do
     advertiser = Advertiser.find(params[:advertiser_id])
     publisher = Publisher.find(params[:publisher_id])
 
@@ -58,7 +58,7 @@ class App < Sinatra::Base
     json ""
   end
 
-  get '/approve' do
+  get '/approve/:advertiser_id' do
     advertiser = Advertiser.find(params[:advertiser_id])
     publisher = Publisher.find(params[:publisher_id])
 
