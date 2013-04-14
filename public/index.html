@@ -42,7 +42,7 @@
             <a href="#">Approved <span class="badge badge-info" id="advertiserApprovedCount">3</span></a>
           </li>
           <li>
-            <a href="#">Disapproved/Archive <span id="advertiserDisapprovedCount"></a>
+            <a href="#">Rejected <span class="badge badge-warning" id="advertiserDisapprovedCount"></a>
           </li>
           <li>
             <a href="#">Settings</a>
@@ -50,8 +50,8 @@
         </ul>
         <ul>
           <li class="heading">Ads / Creative</li>
-          <li><a href="#">Approved <span id="adsApprovedCount">3</span></a></li>
-          <li><a href="#">Disapproved <span id="adsDisapprovedCount"></span></a></li>
+          <li><a href="#">Approved <span class="badge badge-info" id="adsApprovedCount">3</span></a></li>
+          <li><a href="#">Rejected <span class="badge badge-warning" id="adsDisapprovedCount"></span></a></li>
           <li><a href="#">Settings</a></li>
         </ul>
         <ul>
@@ -87,9 +87,11 @@
             <img style="width:100%" src="${img_url}">
           </div>
           <div class="advertiser-content span3">
-            <h4>${brandName}</h4>
-            <p>
+            <h4>
+              ${username}
               <span class="badge badge-klout">${klout_score}</span>
+            </h4>
+            <p class="description">
               ${description}
             </p>
           </div>
