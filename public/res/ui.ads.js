@@ -87,6 +87,8 @@ $.widget( "ui.ads", {
     item.fadeIn(1000).appendTo(this.element);
   },
   destroy: function () {
+      this.element.off(this.options.approveSelector,'click');
+      this.element.off(this.options.disapproveSelector,'click');
       // if using jQuery UI 1.8.x
       $.Widget.prototype.destroy.call(this);
       // if using jQuery UI 1.9.x

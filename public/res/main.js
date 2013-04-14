@@ -7,6 +7,10 @@ $(document).ready(function(){
     placeFooter();
   });
 
+  $(window).scroll(function() {
+    $('#modalAlreadyFiltered').fadeOut(500);
+  });
+
   $('#aFrontPage').click(function(){
     loadFrontPage();
   });
