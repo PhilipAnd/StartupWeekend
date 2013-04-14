@@ -3,16 +3,8 @@ var isAdsPageLoaded = false;
 
 $(document).ready(function(){
   loadFrontPage();
-
-  setTimeout(function(){placeFooter()}, 3000);
-
-  $(window).resize(function(){
-    placeFooter();
-  });
-
-  $(window).scroll(function() {
-    $('#modalAlreadyFiltered').fadeOut(500);
-  });
+  $('#modalAlreadyFiltered').addClass('visible');
+  $('#modalAlreadyFiltered .close-overlay').click(function() { $('#modalAlreadyFiltered').removeClass('visible'); return false; });
 
   $('#aFrontPage').click(function(){
     loadFrontPage();
@@ -23,10 +15,6 @@ $(document).ready(function(){
   });
 });
 
-function placeFooter()
-{
-  $('#modalAlreadyFiltered').addClass('visible');
-};
 
 function loadFrontPage(){
   $('#divAdsPage').hide();
