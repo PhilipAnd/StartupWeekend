@@ -39,7 +39,7 @@
           <li class="heading">Advertisers
           </li>
           <li>
-            <a href="#">Approved <span id="advertiserApprovedCount">(3)</span></a>
+            <a href="#">Approved <span class="badge" id="advertiserApprovedCount">3</span></a>
           </li>
           <li>
             <a href="#">Disapproved/Archive <span id="advertiserDisapprovedCount"></a>
@@ -80,22 +80,24 @@
 
 
     <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
-        <div class="media advertisers span4 js_advertisers">
-            <span class="pull-left">
-              <img class="media-object profile" src="${brandImage}">
-            </span>
-            <div class="media-body">
-              <div class="pull-left">
-                <h4 class="media-heading">${brandName}</h4>
-                <p>${description}</p>
-              </div>
-              <div class="pull-right">
-                <span class="badge badge-important">${kloutScore}</span>
-              </div>
-            </div>
-            <a href="#" class="js_approveAdvertiser btn"><i class="icon-user icon-ok"></i>Approve</a>
-            <a href="#" class="js_disapproveAdvertiser btn"><i class="icon-user icon-remove"></i>Disaprove</a>
+      <li class="advertiser span6 js_advertisers">
+        <div class="row">
+          <div class="advertiser-profile span1">
+            <img style="width:100%" src="${brandImage}">
+          </div>
+          <div class="advertiser-content span3">
+            <h4>${brandName}</h4>
+            <p>
+              <span class="badge badge-klout">${kloutScore}</span>
+              ${description}
+            </p>
+          </div>
+          <div class="advertiser-actions span2">
+            <a href="#" class="js_approveAdvertiser btn approve">b</a><a
+               href="#" class="js_disapproveAdvertiser btn disapprove">a</a>
+          </div>
         </div>
+      </div>
     </script>
 
     <script id="adsItemTmpl" type="text/x-jquery-tmpl">
