@@ -2,7 +2,7 @@ $(document).ready(function(){
   loadFrontPage();
 
   setTimeout(function(){placeFooter()}, 3000);
-  
+
   $(window).resize(function(){
     placeFooter();
   });
@@ -17,7 +17,7 @@ $(document).ready(function(){
 
   $('#aAdsPage').click(function(){
     loadAdsPage();
-  });        
+  });
 });
 
 function loadFrontPage(){
@@ -36,12 +36,7 @@ function loadFrontPage(){
 
 function placeFooter()
 {
-  var footer = $('#modalAlreadyFiltered');
-  var wHeight = $(window).height();
-  var footerHeight = footer.height();
-  var offset = parseInt(wHeight) - parseInt(footerHeight);
-  footer.css('top',offset);
-  footer.fadeIn('3000');
+  $('#modalAlreadyFiltered').addClass('visible');
 };
 
 function loadAdsPage()

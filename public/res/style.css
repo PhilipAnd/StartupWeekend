@@ -9,6 +9,7 @@
     font-style: normal;
 }
 
+
 #divAds .ad1 {
   width: 255px;
   height: 255px;
@@ -70,7 +71,23 @@
 
 .advertiser h4 {
     font-weight:normal;
-    font-size:24px
+    font-size:24px;
+}
+
+.advertiser-content .description {
+    margin-left:30px;
+}
+
+.badge-klout {
+    position:absolute;
+    background:transparent;
+    background-image:url(klout-24x24.png);
+    height:30px;
+    width:30px;
+    padding:0;
+    line-height:24px;
+    text-align:center;
+    vertical-align:middle;
 }
 
 .advertiser-actions {
@@ -140,9 +157,26 @@
 .modal-filter {
   text-align: center;
   width: 100%;
-  background-color: #ff0039;
-  height: 30px;
-  color:white;
+  background-color: #DFDFDF;
+  color:#999;
+  position:absolute;
+  bottom:0;
+  left:0;
+  opacity:0;
+  transition: opacity 3s ease-in-out;
+  -moz-transition: opacity 3s ease-in-out;
+  -webkit-transition: opacity 3s ease-in-out;
+  padding:24px 0;
+}
+
+.modal-filter.visible {
+  opacity:1;
+}
+
+.modal-filter p {
+    font-size:24px;
+    line-height:36px;
+    padding:0 250px;
 }
 
 .brand {
@@ -164,4 +198,10 @@
   color:white;
   font-weight: bolder;
   padding-left:5px;
+}
+
+
+.leftMenu a {
+    line-height:30px;
+    margin-left:10px;
 }

@@ -39,7 +39,7 @@
           <li class="heading">Advertisers
           </li>
           <li>
-            <a href="#">Approved <span class="badge" id="advertiserApprovedCount">3</span></a>
+            <a href="#">Approved <span class="badge badge-info" id="advertiserApprovedCount">3</span></a>
           </li>
           <li>
             <a href="#">Disapproved/Archive <span id="advertiserDisapprovedCount"></a>
@@ -50,7 +50,7 @@
         </ul>
         <ul>
           <li class="heading">Ads / Creative</li>
-          <li><a href="#">Approved <span id="adsApprovedCount">(3)</span></a></li>
+          <li><a href="#">Approved <span class="badge badge-info" id="adsApprovedCount">3</span></a></li>
           <li><a href="#">Disapproved <span id="adsDisapprovedCount"></span></a></li>
           <li><a href="#">Settings</a></li>
         </ul>
@@ -89,7 +89,7 @@
             <h4>${brandName}</h4>
             <p>
               <span class="badge badge-klout">${kloutScore}</span>
-              ${description}
+              <span class="description">${description}</span>
             </p>
           </div>
           <div class="advertiser-actions span2">
@@ -124,10 +124,10 @@
   </div>
 
     <!-- Used to display that we have already filtered the stuff when the user first time logs in -->
-    <div id="modalAlreadyFiltered" class="modal-filter" style="position: absolute; display: none;">
-      <span>
-        We already approved the best advertisers for you, based on our algorithm. You can see the <a href="#">result</a>, or you can just <a href="#" onclick="closeOverlay(this)">close</a> this overlay.
-      </span>
+    <div id="modalAlreadyFiltered" class="modal-filter">
+      <p>
+        Hi. We already approved the best advertisers for you, based on our algorithm. You can see the <a href="#">result</a>, or you can just <a href="#" onclick="closeOverlay(this)">close</a> this overlay.
+      </p>
     </div>
 
     <script src="res/jquery-1.9.1.js"></script>
