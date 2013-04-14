@@ -4,20 +4,17 @@ require 'json'
 require 'sinatra/base'
 require 'cgi'
 require 'mongoid'
-#require '../services'
-require '../models/publisher'
-require '../models/placement'
-require '../models/advertiser'
-require '../models/advertisement'
+require './services'
+require './models/publisher'
+require './models/placement'
+require './models/advertiser'
+require './models/advertisement'
 
 
  
-Mongoid.load!("../mongoid.yml")
+Mongoid.load!("mongoid.yml")
 
 def mockup
-
-	# ser = UserInfoService.new(Twitter.new, Klout.new)
-	# p ser.get_info("Securifi")
 	cleanup
 	mock_publishers
 	mock_ads
@@ -47,14 +44,19 @@ end
 
 def mock_ads
 	puts "seeding advitisers"
+	ser = UserInfoService.new(Twitter.new, Klout.new)
+
 	(1...advitisers.size).each do |i|
 		temp_adv = advitisers[i]
+
+		user_info = ser.get_info(temp_adv[:username])
+
 		advitiser = Advertiser.new
 		advitiser.username = temp_adv[:username]
-		advitiser.klout_score = temp_adv[:klout_score]
+		advitiser.klout_score = user_info[:klout_score]
 		advitiser.website = temp_adv[:website]
 		advitiser.description = temp_adv[:description]
-		advitiser.img_url = temp_adv[:img_url]
+		advitiser.img_url = user_info[:image]
 		advitiser.save
 
 		ad = ads[i]
@@ -80,34 +82,34 @@ def advitisers
 		{:username => "Bug Herd", :description =>"Beautifully simple bug tracking for your websites and web applications.", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/1182953199/logo2_normal.png"},
 		{:username => "Braintree payments", :description =>"AUTHENTIC: Open APIs, a strong developer community, and rave-worthy support.", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/1891596045/new-dots_normal.png"},
 		{:username => "Campaign Monitor", :description =>"Send beautiful email newsletters with Campaign Monitor", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/2327138659/y11562ftv2xht7t3z6ce_normal.png"},
-		{:username => "Helpscount", :description =>"Built for small business, you can get up & running with Help Scout in 4 minutes", :website => "www.test.com", :klout_score=> 10, :img_url =>""},
 		{:username => "Groovemade", :description =>"Made of 100% recycled skateboards - Free shipping w/ code: vibranti", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/2320280400/3ne4yjc67kpyh92gqmko_normal.jpeg"},
 		{:username => "Mandril", :description =>"Mandrill is a new transactional email service from MailChimp. Try it today.", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/520974102/header2_normal.jpg"},
 		{:username => "GetHarvest", :description =>"Painless time tracking for creative professionals.", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"},
 		{:username => "Powtoon", :description =>"Create free animated videos and awesome presentations", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/3278304400/fc3e54dc706d64219fb4e2696b0ae9ea_normal.png"},
-		{:username => "InfographicDesignTeam.com", :description =>"Custom Infographics Design and Data Visualization Services", :website => "www.test.com", :klout_score=> 10, :img_url =>""},
-		{:username => "New Relic", :description =>"Speed Up Your Code! Try New Relic Free and Get This Awesome Shirt!", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/3406837805/0779891adbade5fba538642cbd6d3953_normal.png"}
+		#{:username => "InfographicDesignTeam.com", :description =>"Custom Infographics Design and Data Visualization Services", :website => "www.test.com", :klout_score=> 10, :img_url =>""},
+		{:username => "New Relic", :description =>"Speed Up Your Code! Try New Relic Free and Get This Awesome Shirt!", :website => "www.test.com", :klout_score=> 10, :img_url =>"https://si0.twimg.com/profile_images/3406837805/0779891adbade5fba538642cbd6d3953_normal.png"},
+		{:username => "Helpscount", :description =>"Built for small business, you can get up & running with Help Scout in 4 minutes", :website => "www.test.com", :klout_score=> 10, :img_url =>""}
 	]
 end
 
 def ads
 	[
-		{:width => 500, :height => 300, :creative => "html", :img_name => "securifi.jpg"},
-		{:width => 350, :height => 180, :creative => "html", :img_name => "outdoortech.jpg"},
-		{:width => 130, :height => 100, :creative => "html", :img_name => "fusioncharts.jpg"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "dropifi.jpg"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "cloud9.jpg"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "bigcommerce.jpg"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "bugherd.png"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "braintree.jpg"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "campaignMonitor.png"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "helpscout.png"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "groovemade.jpg"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "mandril.png"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "GetHarvest.png"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "powtoon.jpg"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "glyphicons-halflings.png"},
-		{:width => 100, :height => 80, :creative => "html", :img_name => "newrelic.jpeg"},
+		{:width => 500, :height => 300, :creative => "html", :img_name => "securifi_250.jpg"},
+		{:width => 350, :height => 180, :creative => "html", :img_name => "outdoortech_250.jpg"},
+		{:width => 130, :height => 100, :creative => "html", :img_name => "fusioncharts_250.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "dropifi_250.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "cloud9_250.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "bigcommerce_250.jpeg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "bugherd_250.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "braintree_250.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "campaignMonitor_250.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "groovemade_250.jpg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "mandril_250.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "getharvest_250.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "powtoon_250.jpg"},
+		#{:width => 100, :height => 80, :creative => "html", :img_name => "glyphicons-halflings.png"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "newrelic_250.jpeg"},
+		{:width => 100, :height => 80, :creative => "html", :img_name => "helpscout_250.png"}
 	]
 end
 
