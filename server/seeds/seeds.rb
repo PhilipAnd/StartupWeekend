@@ -57,7 +57,7 @@ def mock_ads
 		advitiser.img_url = temp_adv[:img_url]
 		advitiser.save
 
-		1.upto 15 do
+		1.upto 1 do
 			ad = ads[Random.rand(ads.size)]
 			advitiser.advertisements.create(
 				{:width => ad[:width], 
