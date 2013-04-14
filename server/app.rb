@@ -40,7 +40,7 @@ class App < Sinatra::Base
 
 
   get '/advertisers' do
-    json Advertiser.all
+    json Advertiser.all.desc(:klout_score)
   end
 
   get '/reject' do
