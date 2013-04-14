@@ -6,7 +6,7 @@ $(document).ready(function(){
 
   setTimeout(function(){
     $('.js_moreAdvertisers').fadeIn(3000);
-  }, 5000);
+  }, 7000);
 
   $('#modalAlreadyFiltered').addClass('visible');
     var hideFiltered = function() { $('#modalAlreadyFiltered').removeClass('visible'); return false; };

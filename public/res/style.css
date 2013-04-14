@@ -146,23 +146,38 @@
 .adHover {
   display:none;
   position:absolute;
-  top: 10px;
-  width: 255px;
+  top:10px;
+  left:10px;
+  width: 250px;
 }
 
-.adHover .add {
-  background-color:#3eca50;
+.adHover .add, .adHover .remove {
   opacity: 0.9;
   width: 50%;
-  height: 255px;
+  height: 250px;
+  line-height: 250px;
+    font-family: 'icomoon';
+    font-size: 48px;
+    vertical-align:middle;
+    text-align:center;
+    transition: all .25s ease-in-out;
+   -moz-transition: all .25s ease-in-out;
+   -webkit-transition: all .25s ease-in-out;
+    background-color:#ccc;
+color:#333;
 }
 
-.adHover .remove {
-  background-color:#e41c30;
-  opacity: 0.9;
-  width: 50%;
-  height: 255px;
+.adHover .add:hover {
+    color:#ddffeb;
+    background-color:#2ecc71;
 }
+
+.adHover .remove:hover {
+    color:#ffa3a3;
+    background-color:#E74C3C;
+}
+
+
 
 .modal-filter {
   text-align: center;
