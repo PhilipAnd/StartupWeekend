@@ -33,7 +33,7 @@ def mock_publishers
 	pub.username = "Qrate"
 	pub.save
 
-	1.upto 10 do
+	1.upto 3 do
 		size = ad_sizes[Random.rand(ad_sizes.size)]
 		pub.placements.create(
 			{:width => size[:width], 
