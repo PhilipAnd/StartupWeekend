@@ -3,25 +3,13 @@ var isAdsPageLoaded = false;
 
 $(document).ready(function(){
   loadFrontPage();
-<<<<<<< HEAD
-
-  setTimeout(function(){placeFooter()}, 3000);
 
   setTimeout(function(){
     $('.js_moreAdvertisers').fadeIn(3000);
   }, 5000);
 
-  $(window).resize(function(){
-    placeFooter();
-  });
-
-  $(window).scroll(function() {
-    $('#modalAlreadyFiltered').fadeOut(500);
-  });
-=======
   $('#modalAlreadyFiltered').addClass('visible');
   $('#modalAlreadyFiltered .close-overlay').click(function() { $('#modalAlreadyFiltered').removeClass('visible'); return false; });
->>>>>>> efabfcdb1d90ea9dcaec5fcdf3c716d7a874f383
 
   $('#aFrontPage').click(function(){
     loadFrontPage();
