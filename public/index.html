@@ -39,10 +39,10 @@
           <li class="heading">Advertisers
           </li>
           <li>
-            <a href="#">Approved <span class="badge">3</span></a>
+            <a href="#">Approved <span class="badge" id="advertiserApprovedCount">3</span></a>
           </li>
           <li>
-            <a href="#">Disapproved/Archive</a>
+            <a href="#">Disapproved/Archive <span id="advertiserDisapprovedCount"></a>
           </li>
           <li>
             <a href="#">Settings</a>
@@ -50,8 +50,8 @@
         </ul>
         <ul>
           <li class="heading">Ads / Creative</li>
-          <li><a href="#">Approved (3)</a></li>
-          <li><a href="#">Disapproved</a></li>
+          <li><a href="#">Approved <span id="adsApprovedCount">(3)</span></a></li>
+          <li><a href="#">Disapproved <span id="adsDisapprovedCount"></span></a></li>
           <li><a href="#">Settings</a></li>
         </ul>
         <ul>
@@ -73,42 +73,6 @@
 
       <div id="divAdsPage" style="display:none">
         <div id="divAds">
-          <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -116,7 +80,7 @@
 
 
     <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
-      <li class="advertiser span6">
+      <li class="advertiser span6 js_advertisers">
         <div class="row">
           <div class="advertiser-profile span1">
             <img style="width:100%" src="${brandImage}">
@@ -132,6 +96,16 @@
             <a href="#" class="js_approveAdvertiser btn approve">b</a><a
                href="#" class="js_disapproveAdvertiser btn disapprove">a</a>
           </div>
+        </div>
+      </div>
+    </script>
+
+    <script id="adsItemTmpl" type="text/x-jquery-tmpl">
+      <div class="box ad1">
+        <img src="/img/${img_name}"/>
+        <div class="adHover">
+          <div class="add pull-left">Add</div>
+          <div class="remove pull-right">Remove</div>
         </div>
       </div>
     </script>

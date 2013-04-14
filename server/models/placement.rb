@@ -9,6 +9,7 @@ class Placement
     field :advertisements_approves, type: Array
 
     embedded_in :publisher, :inverse_of => :placements
+   # has_many :advertisements
 end
 
 

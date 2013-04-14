@@ -12,11 +12,17 @@ $.widget( "ui.ads", {
       itemSelector: '.box',
       columnWidth: 150
     });*/
-    //this._getIntialData(this._renderAdvertisers);
+    this._getIntialData(this._renderAdvertisers);
     this._setupClickEvents();
   },
   _renderAdvertisers: function(self, data){
     $(self.options.templateSelector).tmpl(data).appendTo(self.element);
+  },
+  _getIntialData: function(){
+    var self = this;
+    $.getJSON("/ads",function(data){
+      self._renderAdvertisers(self,data);
+    });
   },
   _setupClickEvents: function()
   {
@@ -32,6 +38,7 @@ $.widget( "ui.ads", {
   _approveAdvertiser: function(element,id)
   {
     $(element).parents('.box').fadeOut();
+    this._updateApprovedAds();
     //this._loadMoreAdvertisers(1);
   },
   _disaproveAdvertiser: function(element,id)
@@ -39,6 +46,32 @@ $.widget( "ui.ads", {
     $(element).parents('.box').fadeOut();
     //this._loadMoreAdvertisers(1);
     $('#modalRejection').modal({keyboard:false});
+    this._updateDisapprovedAds();
+  },
+  _updateApprovedAds: function(){
+    var countElement = $('#adsApprovedCount');
+    var newCount = this._getNumber(countElement.text()) +1;
+    countElement.fadeOut(function(){
+      countElement.text("("+newCount+")").fadeIn(2000);
+    });
+    countElement.text("("+newCount+")");
+  },
+  _updateDisapprovedAds: function(){
+    var countElement = $('#adsDisapprovedCount');
+    var newCount = this._getNumber(countElement.text()) + 1;
+    countElement.fadeOut(function(){
+      countElement.text("("+newCount+")").fadeIn(2000);
+    });
+    countElement.text("("+newCount+")");
+  },
+  // Get number from approved/disapproved string
+  _getNumber: function(inputString){
+    inputString = inputString.replace('(','').replace(')','');
+    if(inputString == "")
+    {
+      return 0;
+    }
+    return parseInt(inputString);
   },
   _loadMoreAdvertisers: function(count){
     var data = [
@@ -53,22 +86,9 @@ $.widget( "ui.ads", {
     var item = $(this.options.templateSelector).tmpl(data);
     item.fadeIn(1000).appendTo(this.element);
   },
-  _getIntialData: function(){
-    var data = [
-      {
-        title: 'New Relic',
-        description: 'Speed Up Your Code! Try New Relic Free and Get This Awesome Shirt!',
-        imageName: 'bigcommerce',
-      },
-      {
-        title: '',
-        description: '',
-        imageName: ''
-      },
-    ];
-    this._renderAdvertisers(this,data);
-  },
   destroy: function () {
+      this.element.off(this.options.approveSelector,'click');
+      this.element.off(this.options.disapproveSelector,'click');
       // if using jQuery UI 1.8.x
       $.Widget.prototype.destroy.call(this);
       // if using jQuery UI 1.9.x
