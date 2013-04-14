@@ -73,42 +73,6 @@
 
       <div id="divAdsPage" style="display:none">
         <div id="divAds">
-          <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-            <div class="box ad1">
-                <img src="http://placekitten.com/255/255"/>
-                <div class="adHover">
-                    <div class="add pull-left">Add</div>
-                    <div class="remove pull-right">Remove</div>
-                </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -116,7 +80,7 @@
 
 
     <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
-        <div class="media advertisers span4">
+        <div class="media advertisers span4 js_advertisers">
             <span class="pull-left">
               <img class="media-object profile" src="${brandImage}">
             </span>
@@ -132,6 +96,16 @@
             <a href="#" class="js_approveAdvertiser btn"><i class="icon-user icon-ok"></i>Approve</a>
             <a href="#" class="js_disapproveAdvertiser btn"><i class="icon-user icon-remove"></i>Disaprove</a>
         </div>
+    </script>
+
+    <script id="adsItemTmpl" type="text/x-jquery-tmpl">
+      <div class="box ad1">
+        <img src="http://placekitten.com/255/255"/>
+        <div class="adHover">
+          <div class="add pull-left">Add</div>
+          <div class="remove pull-right">Remove</div>
+        </div>
+      </div>
     </script>
 
     <div id="modalRejection" class="modal hide fade">

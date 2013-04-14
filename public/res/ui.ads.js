@@ -12,11 +12,17 @@ $.widget( "ui.ads", {
       itemSelector: '.box',
       columnWidth: 150
     });*/
-    //this._getIntialData(this._renderAdvertisers);
+    this._getIntialData(this._renderAdvertisers);
     this._setupClickEvents();
   },
   _renderAdvertisers: function(self, data){
     $(self.options.templateSelector).tmpl(data).appendTo(self.element);
+  },
+  _getIntialData: function(){
+    var self = this;
+    $.getJSON("/ads",function(data){
+      self._renderAdvertisers(self,data);
+    });
   },
   _setupClickEvents: function()
   {
@@ -79,21 +85,6 @@ $.widget( "ui.ads", {
 
     var item = $(this.options.templateSelector).tmpl(data);
     item.fadeIn(1000).appendTo(this.element);
-  },
-  _getIntialData: function(){
-    var data = [
-      {
-        title: 'New Relic',
-        description: 'Speed Up Your Code! Try New Relic Free and Get This Awesome Shirt!',
-        imageName: 'bigcommerce',
-      },
-      {
-        title: '',
-        description: '',
-        imageName: ''
-      },
-    ];
-    this._renderAdvertisers(this,data);
   },
   destroy: function () {
       // if using jQuery UI 1.8.x

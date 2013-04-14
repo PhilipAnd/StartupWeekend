@@ -35,13 +35,13 @@ $.widget( "ui.approveadvertisers", {
   },
   _approveAdvertiser: function(element,id)
   {
-    $(element).parents('li').fadeOut();
+    $(element).parents('.js_advertisers').fadeOut();
     this._loadMoreAdvertisers(1);
     this._updateApprovedAdvertisers();
   },
   _disaproveAdvertiser: function(element,id)
   {
-    $(element).parents('li').fadeOut();
+    $(element).parents('.js_advertisers').fadeOut();
     this._loadMoreAdvertisers(1);
     $('#modalRejection').modal({keyboard:false});
     this.updateDisapprovedAdvertisers();
