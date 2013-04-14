@@ -11,8 +11,8 @@
 
 
 #divAds .ad1 {
-  width: 255px;
-  height: 255px;
+  width: 250px;
+  height: 250px;
 }
 
 #divAds .ad2 {
@@ -137,21 +137,22 @@
   display:none;
   position:absolute;
   top: 10px;
-  width: 255px;
+  width: 250px;
+  left: 10px;
 }
 
 .adHover .add {
   background-color:#3eca50;
   opacity: 0.9;
   width: 50%;
-  height: 255px;
+  height: 250px;
 }
 
 .adHover .remove {
   background-color:#e41c30;
   opacity: 0.9;
   width: 50%;
-  height: 255px;
+  height: 250px;
 }
 
 .modal-filter {
