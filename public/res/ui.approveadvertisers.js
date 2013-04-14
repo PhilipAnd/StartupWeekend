@@ -47,7 +47,8 @@ $.widget( "ui.approveadvertisers", {
     this.updateDisapprovedAdvertisers();
   },
   _loadMoreAdvertisers: function(count, appendToTop){
-    var data = [
+    return;
+    /*var data = [
       {
         brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
         brandName: "Coca Cola",
@@ -63,26 +64,26 @@ $.widget( "ui.approveadvertisers", {
     }else{
       item.fadeIn(1500).appendTo(this.element);
     }
+    */
   },
   _updateApprovedAdvertisers: function(){
     var countElement = $('#advertiserApprovedCount');
     var newCount = this._getNumber(countElement.text()) +1;
     countElement.fadeOut(function(){
-      countElement.text("("+newCount+")").fadeIn(2000);
+      countElement.text(newCount).fadeIn(2000);
     });
-    countElement.text("("+newCount+")");
+    countElement.text(newCount);
   },
   updateDisapprovedAdvertisers: function(){
     var countElement = $('#advertiserDisapprovedCount');
     var newCount = this._getNumber(countElement.text()) + 1;
     countElement.fadeOut(function(){
-      countElement.text("("+newCount+")").fadeIn(2000);
+      countElement.text(newCount).fadeIn(2000);
     });
-    countElement.text("("+newCount+")");
+    countElement.text(newCount);
   },
   // Get number from approved/disapproved string
   _getNumber: function(inputString){
-    inputString = inputString.replace('(','').replace(')','');
     if(inputString == "")
     {
       return 0;
@@ -90,21 +91,10 @@ $.widget( "ui.approveadvertisers", {
     return parseInt(inputString);
   },
   _getIntialData: function(){
-    var data = [
-      {
-        brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
-        brandName: "Coca Cola",
-        kloutScore: 91,
-        description: 'Klout score. @CocaCola'
-      },
-      {
-        brandImage: "http://a0.twimg.com/profile_images/1884480827/profilePic_reasonably_small.jpg",
-        brandName: "Coca Cola",
-        kloutScore: 91,
-        description: 'Klout score. @CocaCola'
-      }
-    ];
-    this._renderAdvertisers(this,data);
+    var self = this;
+    $.getJSON('/advertisers',function(data){
+      self._renderAdvertisers(self,data);
+    });
   },
   destroy: function () {
       // if using jQuery UI 1.8.x

@@ -52,21 +52,20 @@ $.widget( "ui.ads", {
     var countElement = $('#adsApprovedCount');
     var newCount = this._getNumber(countElement.text()) +1;
     countElement.fadeOut(function(){
-      countElement.text("("+newCount+")").fadeIn(2000);
+      countElement.text(newCount).fadeIn(2000);
     });
-    countElement.text("("+newCount+")");
+    countElement.text(newCount);
   },
   _updateDisapprovedAds: function(){
     var countElement = $('#adsDisapprovedCount');
     var newCount = this._getNumber(countElement.text()) + 1;
     countElement.fadeOut(function(){
-      countElement.text("("+newCount+")").fadeIn(2000);
+      countElement.text(newCount).fadeIn(2000);
     });
-    countElement.text("("+newCount+")");
+    countElement.text(newCount);
   },
   // Get number from approved/disapproved string
   _getNumber: function(inputString){
-    inputString = inputString.replace('(','').replace(')','');
     if(inputString == "")
     {
       return 0;
