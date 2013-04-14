@@ -3,6 +3,11 @@ var isAdsPageLoaded = false;
 
 $(document).ready(function(){
   loadFrontPage();
+
+  setTimeout(function(){
+    $('.js_moreAdvertisers').fadeIn(3000);
+  }, 5000);
+
   $('#modalAlreadyFiltered').addClass('visible');
     var hideFiltered = function() { $('#modalAlreadyFiltered').removeClass('visible'); return false; };
   $('#modalAlreadyFiltered .close-overlay').click(hideFiltered);
