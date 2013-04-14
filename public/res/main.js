@@ -1,3 +1,6 @@
+var isFrontPageLoaded = false;
+var isAdsPageLoaded = false;
+
 $(document).ready(function(){
   loadFrontPage();
 
@@ -20,20 +23,6 @@ $(document).ready(function(){
   });        
 });
 
-function loadFrontPage(){
-  if($('#divAdsPage').is(':visible'))
-  {
-    $('#divAds').ads('destroy');
-  }
-  $('#divAdsPage').hide();
-  $('#divFrontPage').show();
-  $('#ulAdvertisers').approveadvertisers({
-    templateSelector: '#advertiserItemTmpl',
-    approveSelector: '.js_approveAdvertiser',
-    disapproveSelector: '.js_disapproveAdvertiser'
-  });
-};
-
 function placeFooter()
 {
   var footer = $('#modalAlreadyFiltered');
@@ -44,16 +33,33 @@ function placeFooter()
   footer.fadeIn('3000');
 };
 
+function loadFrontPage(){
+  $('#divAdsPage').hide();
+  $('#divFrontPage').show();
+  if(!isFrontPageLoaded)
+  {
+    $('#ulAdvertisers').approveadvertisers({
+      templateSelector: '#advertiserItemTmpl',
+      approveSelector: '.js_approveAdvertiser',
+      disapproveSelector: '.js_disapproveAdvertiser'
+    });
+    isFrontPageLoaded = true;
+  }
+};
+
 function loadAdsPage()
 {
-  $('#ulAdvertisers').approveadvertisers('destroy');
   $('#divAdsPage').show();
   $('#divFrontPage').hide();
-  $('#divAds').ads({
-      templateSelector: '#adsItemTmpl',
-      approveSelector: '.adHover .add',
-      disapproveSelector: '.adHover .remove'
-    });
+  if(!isAdsPageLoaded)
+  {
+    $('#divAds').ads({
+        templateSelector: '#adsItemTmpl',
+        approveSelector: '.adHover .add',
+        disapproveSelector: '.adHover .remove'
+      });
+    isAdsPageLoaded = true;
+  }
 };
 
 function closeOverlay(){
