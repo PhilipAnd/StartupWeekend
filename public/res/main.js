@@ -17,6 +17,8 @@ $(document).ready(function(){
     loadFrontPage();
   });
 
+    loadAdsPage();
+
   $('#aAdsPage').click(function(){
     loadAdsPage();
   });

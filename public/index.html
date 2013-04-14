@@ -3,7 +3,6 @@
   <head>
     <title>Q-Rate</title>
     <link rel="stylesheet" href="res/bootstrap-cosmo.css">
-    <link rel="stylesheet" href="res/bootstrap-responsive.css">
     <link rel="stylesheet" href="res/style.css">
     <!--[if lt IE 9]>
         <script src="res/html5shiv.js"></script>
@@ -27,8 +26,8 @@
 
   <div class="filters">
     <div class="btn-group" data-toggle="buttons-radio">
-      <a id="aFrontPage" href="#" class="btn btn-primary active">Advertisers</button>
-      <a id="aAdsPage" href="#" class="btn btn-primary">Ads</a>
+      <a id="aAdsPage" href="#" class="btn btn-primary active">Ads</a>
+      <a id="aFrontPage" href="#" class="btn btn-primary">Advertisers</a>
     </div>
   </div>
 
@@ -65,14 +64,14 @@
       </div>
     </div>
     <div class="span6">
-      <div id="divFrontPage">
+      <div id="divFrontPage" style="display:none">
         <div class="btn newAdvertisers js_moreAdvertisers" style="display:none">New advertisers added. <a href="#">Click to load</a></div>
         <ul id="ulAdvertisers">
 
         </ul>
       </div>
 
-      <div id="divAdsPage" style="display:none">
+      <div id="divAdsPage">
         <div id="divAds">
         </div>
       </div>
