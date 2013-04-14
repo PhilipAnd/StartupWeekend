@@ -4,7 +4,9 @@ var isAdsPageLoaded = false;
 $(document).ready(function(){
   loadFrontPage();
   $('#modalAlreadyFiltered').addClass('visible');
-  $('#modalAlreadyFiltered .close-overlay').click(function() { $('#modalAlreadyFiltered').removeClass('visible'); return false; });
+    var hideFiltered = function() { $('#modalAlreadyFiltered').removeClass('visible'); return false; };
+  $('#modalAlreadyFiltered .close-overlay').click(hideFiltered);
+  $(window).scroll(hideFiltered);
 
   $('#aFrontPage').click(function(){
     loadFrontPage();

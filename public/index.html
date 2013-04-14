@@ -81,11 +81,11 @@
 
     <script id="advertiserItemTmpl" type="text/x-jquery-tmpl">
       <li class="advertiser span6 js_advertisers">
-        <div class="row">
-          <div class="advertiser-profile span1">
+        <div class="advertiser-row">
+          <div class="advertiser-profile">
             <img style="width:100%" src="${img_url}">
           </div>
-          <div class="advertiser-content span3">
+          <div class="advertiser-content">
             <h4>
               ${username}
               <span class="badge badge-klout">${klout_score}</span>
@@ -94,10 +94,8 @@
               ${description}
             </p>
           </div>
-          <div class="advertiser-actions span2">
-            <a href="#" class="js_approveAdvertiser btn approve">b</a><a
-               href="#" class="js_disapproveAdvertiser btn disapprove">a</a>
-          </div>
+          <a href="#" class="advertiser-action js_approveAdvertiser btn approve">b</a>
+          <a href="#" class="advertiser-action js_disapproveAdvertiser btn disapprove">a</a>
         </div>
       </div>
     </script>
